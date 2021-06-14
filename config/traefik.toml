@@ -27,7 +27,7 @@
 [certificatesResolvers]
   [certificatesResolvers.default]
     [certificatesResolvers.default.acme]
-      email = "contact@superman.com"
+      email = "cedric@fullfrontend.be"
       storage = "acme.json"
       caServer = "https://acme-v01.api.letsencrypt.org/directory"
     [certificatesResolvers.default.acme.tlsChallenge]
