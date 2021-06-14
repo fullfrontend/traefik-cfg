@@ -1,7 +1,5 @@
-# /apps/traefik/traefik.toml
 [api]
   dashboard = true
-  insecure = true
 
 [entryPoints]
   [entryPoints.web]
