@@ -29,3 +29,6 @@
       storage = "acme.json"
       caServer = "https://acme-v01.api.letsencrypt.org/directory"
     [certificatesResolvers.default.acme.tlsChallenge]
+
+[pilot]
+  token = "709ee216-2af7-4287-b635-fa6edfafd849"
