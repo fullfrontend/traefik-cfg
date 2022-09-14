@@ -22,6 +22,10 @@
     exposedByDefault = false
     network = "web"
 
+  [providers.file]
+    directory = "/etc/traefik/dynamic"
+    watch = true
+
 [certificatesResolvers]
   [certificatesResolvers.default]
     [certificatesResolvers.default.acme]
@@ -30,6 +34,3 @@
       caServer = "https://acme-v01.api.letsencrypt.org/directory"
     [certificatesResolvers.default.acme.tlsChallenge]
 
-[providers]
-  [providers.file]
-    directory = "/etc/traefik/dynamic"

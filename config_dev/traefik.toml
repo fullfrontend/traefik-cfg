@@ -5,22 +5,10 @@
   [entryPoints.web]
     address = ":80"
 
-
-  [entryPoints.websecure]
-    address = ":443"
-      [entryPoints.websecure.http.tls]
-        certResolver = "default"
-
 [providers]
   [providers.docker]
     watch = true
     exposedByDefault = false
     network = "web"
-
-[certificatesResolvers]
-  [certificatesResolvers.default]
-    [certificatesResolvers.default.acme]
-      email = "cedric@fullfrontend.be"
-      storage = "acme.json"
-      caServer = "https://acme-v01.api.letsencrypt.org/directory"
-    [certificatesResolvers.default.acme.tlsChallenge]
+  [providers.file]
+    directory = "/etc/traefik/dynamic"
