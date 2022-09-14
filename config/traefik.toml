@@ -29,3 +29,7 @@
       storage = "/etc/traefik/acme.json"
       caServer = "https://acme-v01.api.letsencrypt.org/directory"
     [certificatesResolvers.default.acme.tlsChallenge]
+
+[providers]
+  [providers.file]
+    directory = "/etc/traefik/dynamic"
