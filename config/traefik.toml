@@ -26,6 +26,6 @@
   [certificatesResolvers.default]
     [certificatesResolvers.default.acme]
       email = "cedric@fullfrontend.be"
-      storage = "acme.json"
+      storage = "/etc/traefik/acme.json"
       caServer = "https://acme-v01.api.letsencrypt.org/directory"
     [certificatesResolvers.default.acme.tlsChallenge]

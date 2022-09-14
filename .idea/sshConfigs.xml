@@ -3,6 +3,9 @@
   <component name="SshConfigs">
     <configs>
       <sshConfig authType="OPEN_SSH" host="stage.fullfrontend.be" id="6c1d430d-b179-4fec-8f81-73f00cf53b43" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+      <sshConfig authType="OPEN_SSH" host="prod.fullfrontend.be" id="aadb1f51-9b5f-4314-bdea-f945e3d921a7" port="22" customName="root@prod.fullfrontend.be:22" nameFormat="CUSTOM" username="root" useOpenSSHConfig="true">
+        <option name="customName" value="root@prod.fullfrontend.be:22" />
+      </sshConfig>
     </configs>
   </component>
 </project>
