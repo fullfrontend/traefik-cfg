@@ -1,0 +1,21 @@
+version: 2
+jobs:
+    deploy:
+        machine:
+            enabled: true
+        steps:
+            -   run:
+                    name: "Deploy Traefik to production"
+                    command: |
+                        ssh root@${PRODUCTION_SERVER_IP} "cd ${PRODUCTION_SERVER_PATH} && git pull && ./deploy.sh"
+
+workflows:
+    version: 2
+    deploy:
+        jobs:
+            -   deploy:
+                    context: 'Prod Server'
+                    filters:
+                        branches:
+                            only: master
+
