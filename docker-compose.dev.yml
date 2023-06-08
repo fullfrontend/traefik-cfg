@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+    reverse-proxy:
+        volumes:
+            - ./config_dev:/etc/traefik
+        labels:
+            - "traefik.http.routers.api.rule=Host(`prod.fullfrontend.test`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+            - "traefik.http.routers.api.service=api@internal"

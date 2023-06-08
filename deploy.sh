@@ -1,4 +1,12 @@
 #!/bin/bash
 
-docker compose -f docker-compose.prod.yml pull
-docker compose -f docker-compose.prod.yml up -d
+FILE="--env-file .env -f docker-compose.yml"
+
+if [ $APP_ENV = "prod" ]; then
+  FILE+=" -f docker-compose.prod.yml"
+else
+  FILE+=" -f docker-compose.dev.yml"
+fi
+
+docker compose ${FILE} pull
+docker compose ${FILE} up -d

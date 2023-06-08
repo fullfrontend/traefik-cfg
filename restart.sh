@@ -1,3 +1,12 @@
 #!/bin/bash
 
-docker compose -f docker-compose.prod.yml restart
+
+FILE="--env-file .env -f docker-compose.yml"
+
+if [ $APP_ENV = "prod" ]; then
+  FILE+=" -f docker-compose.prod.yml"
+else
+  FILE+=" -f docker-compose.dev.yml"
+fi
+
+docker compose ${FILE} restart

@@ -1,26 +1,13 @@
-version: '3'
+version: '3.3'
 
 services:
     reverse-proxy:
-        image: traefik:${TRAEFIK_VERSION}
-        container_name: traefik
-        ports:
-            - "80:80"
-            - "443:443"
         volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
             - ./config:/etc/traefik
-        restart: always
         labels:
-            - "traefik.enable=true"
             - "traefik.http.routers.api.rule=Host(`prod.fullfrontend.be`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
             - "traefik.http.routers.api.tls.certResolver=default"
             - "traefik.http.routers.api.service=api@internal"
             - "traefik.http.routers.api.entrypoints=websecure"
             - "traefik.http.routers.api.middlewares=auth"
             - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$10$$wanoqafzGFrJatl86CHtvu7ur9WgpCeI7so0tFvwUg98hZp4yo.KO"
-        networks:
-            - web
-networks:
-    web:
-        external: true
