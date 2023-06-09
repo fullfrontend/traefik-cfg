@@ -8,5 +8,6 @@ else
   FILE+=" -f docker-compose.dev.yml"
 fi
 
-docker compose ${FILE} pull
-docker compose ${FILE} up -d
+echo "Creating 'web' network if not exist";
+docker network create web &> /dev/null || true;
+docker compose ${FILE} up --pull always -d;
