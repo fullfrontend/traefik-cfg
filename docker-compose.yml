@@ -2,6 +2,9 @@ services:
     reverse-proxy:
         image: traefik:${TRAEFIK_VERSION}
         container_name: traefik
+        env_file:
+            - .env
+            - .env.local
         ports:
             - "80:80"
         volumes:

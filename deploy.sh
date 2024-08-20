@@ -11,3 +11,4 @@ fi
 echo "Creating 'web' network if not exist";
 docker network create web &> /dev/null || true;
 docker compose ${FILE} up --pull always -d;
+docker compose ${FILE} restart;

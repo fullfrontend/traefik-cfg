@@ -5,3 +5,4 @@ services:
         labels:
             - "traefik.http.routers.api.rule=Host(`prod.fullfrontend.test`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
             - "traefik.http.routers.api.service=api@internal"
+            - "traefik.http.routers.api.middlewares=dashboard-auth@file"

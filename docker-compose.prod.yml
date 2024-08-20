@@ -9,5 +9,4 @@ services:
             - "traefik.http.routers.api.tls.certResolver=default"
             - "traefik.http.routers.api.service=api@internal"
             - "traefik.http.routers.api.entrypoints=websecure"
-            - "traefik.http.routers.api.middlewares=auth"
-            - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$10$$wanoqafzGFrJatl86CHtvu7ur9WgpCeI7so0tFvwUg98hZp4yo.KO"
+            - "traefik.http.routers.api.middlewares=dashboard-auth@file"

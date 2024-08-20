@@ -1,0 +1,6 @@
+http:
+    middlewares:
+        dashboard-auth:
+            basicAuth:
+                users:
+                    - 'admin:$apr1$mynqzhpx$81.jnjltnc2FgLBCVX2Ph/'

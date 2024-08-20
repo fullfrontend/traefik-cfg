@@ -7,7 +7,7 @@ jobs:
             -   run:
                     name: "Deploy Traefik to production"
                     command: |
-                        ssh root@${PRODUCTION_SERVER_IP} "cd ${PRODUCTION_SERVER_PATH} && git pull && APP_ENV=prod ./deploy.sh"
+                        ssh root@${PRODUCTION_SERVER_IP} "cd ${PRODUCTION_SERVER_PATH} && git pull --rebase && APP_ENV=prod ./deploy.sh"
 
 workflows:
     version: 2
