@@ -1,12 +1,8 @@
 services:
     reverse-proxy:
-        ports:
-            - "443:443"
+
         volumes:
             - ./config:/etc/traefik
         labels:
             - "traefik.http.routers.api.rule=Host(`prod.fullfrontend.be`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
-            - "traefik.http.routers.api.tls.certResolver=default"
-            - "traefik.http.routers.api.service=api@internal"
-            - "traefik.http.routers.api.entrypoints=websecure"
             - "traefik.http.routers.api.middlewares=dashboard-auth@file"

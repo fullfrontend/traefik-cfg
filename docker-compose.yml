@@ -7,11 +7,16 @@ services:
             - .env.local
         ports:
             - "80:80"
+            - "443:443"
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: always
         labels:
             - "traefik.enable=true"
+            - "traefik.http.routers.api.entrypoints=websecure"
+            - "traefik.http.routers.api.service=api@internal"
+            - "traefik.http.routers.api.tls=true"
+
         networks:
             - web
 networks:

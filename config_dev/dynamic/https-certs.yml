@@ -1,0 +1,10 @@
+tls:
+  certificates:
+    - certFile: "/etc/certs/penpot.test.pem"
+      keyFile: "/etc/certs/penpot.test-key.pem"
+    - certFile: "/etc/certs/fullfrontend.test.pem"
+      keyFile: "/etc/certs/fullfrontend.test-key.pem"
+    - certFile: "/etc/certs/_wildcard.test.pem"
+      keyFile: "/etc/certs/_wildcard.test-key.pem"
+    - certFile: "/etc/certs/_wildcard.fullfrontend.test.pem"
+      keyFile: "/etc/certs/_wildcard.fullfrontend.test-key.pem"

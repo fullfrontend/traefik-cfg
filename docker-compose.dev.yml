@@ -2,7 +2,19 @@ services:
     reverse-proxy:
         volumes:
             - ./config_dev:/etc/traefik
+            - ./certs/:/etc/certs:ro
         labels:
             - "traefik.http.routers.api.rule=Host(`prod.fullfrontend.test`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
-            - "traefik.http.routers.api.service=api@internal"
-            - "traefik.http.routers.api.middlewares=dashboard-auth@file"
+        depends_on:
+            -   mkcert
+
+    mkcert:
+        image: fullfrontend/mkcert
+        environment:
+            domain: "*.test,*.fullfrontend.test,fullfrontend.test,penpot.test"
+        volumes:
+            - ./certs/:/root/.local/share/mkcert
+        labels:
+            - "traefik.enable=false"
+        networks:
+            - web
