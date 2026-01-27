@@ -11,7 +11,16 @@ services:
     mkcert:
         image: fullfrontend/mkcert
         environment:
-            domain: "*.test,*.fullfrontend.test,fullfrontend.test,penpot.test,omnitools.test,silviattitude.test,n8n.test,open-webui.test,elementor.test,example.elementor.test,phpmyadmin.elementor.test"
+            domains: |
+                fullfrontend.test
+                penpot.test
+                omnitools.test
+                n8n.test
+                open-webui.test
+                elementor.test
+                example.elementor.test
+                phpmyadmin.elementor.test
+                grangesdutilleul.test
         volumes:
             - ./certs/:/root/.local/share/mkcert
         labels:
