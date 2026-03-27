@@ -33,10 +33,12 @@ awk '
   { print }
 ' "$domains_tmp" | sort -u > "$domains_clean"
 
-printf "services:\n" > "$tmp_file"
-printf "    mkcert:\n" >> "$tmp_file"
-printf "        environment:\n" >> "$tmp_file"
-printf "            domains: |\n" >> "$tmp_file"
+{
+  printf "services:\n"
+  printf "    mkcert:\n"
+  printf "        environment:\n"
+  printf "            domains: |\n"
+} > "$tmp_file"
 
 if [ -s "$domains_clean" ]; then
   while IFS= read -r line; do

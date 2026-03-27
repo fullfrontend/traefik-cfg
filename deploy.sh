@@ -1,27 +1,27 @@
 #!/bin/bash
 set -eu
 
-FILE="--env-file .env -f docker-compose.yml"
 APP_ENV="${APP_ENV:-dev}"
+COMPOSE_ARGS=(--env-file .env -f docker-compose.yml)
 
 if [ "$APP_ENV" = "prod" ]; then
-  FILE+=" -f docker-compose.prod.yml"
+  COMPOSE_ARGS+=(-f docker-compose.prod.yml)
 else
   ./scripts/generate-dev-compose.sh
-  FILE+=" -f docker-compose.dev.yml -f docker-compose.dev.generated.yml"
+  COMPOSE_ARGS+=(-f docker-compose.dev.yml -f docker-compose.dev.generated.yml)
 fi
 
 echo "Creating 'web' network if not exist";
 docker network create web &> /dev/null || true;
-docker compose ${FILE} up --pull always -d;
-docker compose ${FILE} restart;
+docker compose "${COMPOSE_ARGS[@]}" up --pull always -d;
+docker compose "${COMPOSE_ARGS[@]}" restart;
 
 if [ "$APP_ENV" != "prod" ]; then
   echo "Waiting for mkcert container and certs...";
   attempts=0
   max_attempts=30
   while [ $attempts -lt $max_attempts ]; do
-    mkcert_id="$(docker compose ${FILE} ps -q mkcert || true)"
+    mkcert_id="$(docker compose "${COMPOSE_ARGS[@]}" ps -q mkcert || true)"
     if [ -n "$mkcert_id" ]; then
       mkcert_status="$(docker inspect -f '{{.State.Status}}' "$mkcert_id" 2>/dev/null || true)"
     else
