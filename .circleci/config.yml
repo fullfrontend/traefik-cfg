@@ -17,4 +17,4 @@ workflows:
                     context: 'Production Server'
                     filters:
                         branches:
-                            only: main
+                            only: master
