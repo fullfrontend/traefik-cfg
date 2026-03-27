@@ -27,10 +27,11 @@ jobs:
 
       - name: Lint shell scripts
         run: |
-          shellcheck \
+          shellcheck -x \
             deploy.sh \
             down.sh \
             restart.sh \
+            scripts/compose-args.sh \
             scripts/generate-dev-compose.sh \
             scripts/generate-https-certs.sh
 
