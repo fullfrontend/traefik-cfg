@@ -1,12 +1,14 @@
 #!/bin/bash
+set -eu
 
+APP_ENV="${APP_ENV:-dev}"
+COMPOSE_ARGS=(--env-file .env -f docker-compose.yml)
 
-FILE="--env-file .env -f docker-compose.yml"
-
-if [ $APP_ENV = "prod" ]; then
-  FILE+=" -f docker-compose.prod.yml"
+if [ "$APP_ENV" = "prod" ]; then
+  COMPOSE_ARGS+=(-f docker-compose.prod.yml)
 else
-  FILE+=" -f docker-compose.dev.yml"
+  ./scripts/generate-dev-compose.sh
+  COMPOSE_ARGS+=(-f docker-compose.dev.yml -f docker-compose.dev.generated.yml)
 fi
 
-docker compose ${FILE} restart
+docker compose "${COMPOSE_ARGS[@]}" restart

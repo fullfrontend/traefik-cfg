@@ -1,0 +1,13 @@
+fullfrontend.test
+penpot.test
+omnitools.test
+n8n.test
+open-webui.test
+elementor.test
+example.elementor.test
+phpmyadmin.elementor.test
+grangesdutilleul.test
+phpmyadmin.grangesdutilleul.test
+aca.test
+api.retaia.test
+postiz.test
