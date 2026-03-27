@@ -4,14 +4,16 @@ api:
 log:
     level: INFO
 
+# Example tracing configuration kept for learning purposes.
+# Replace or remove this block before using it on a real server.
 tracing:
     otlp:
         grpc:
-            endpoint: api.openobserve.ai:4317
+            endpoint: observability.example.com:4317
             headers:
-                Authorization: "Basic Y2VkcmljQGZ1bGxmcm9udGVuZC5iZToyNVI3bTFFaDBVQ0t1M0Y4NjRTOQ=="
-                organization: cadric_organization_29140_JXmFkyD3BZBU3NI
-                stream-name: default
+                Authorization: "Basic REPLACE_WITH_REAL_CREDENTIALS"
+                organization: your-observability-org
+                stream-name: traefik
             insecure: false
 
 
@@ -46,7 +48,7 @@ providers:
 certificatesResolvers:
     default:
         acme:
-            email: "cedric@fullfrontend.be"
+            email: "ops@example.com"
             storage: "/etc/traefik/acme.json"
-            caServer: "https://acme-v01.api.letsencrypt.org/directory"
+            caServer: "https://acme-v02.api.letsencrypt.org/directory"
             tlsChallenge: { }

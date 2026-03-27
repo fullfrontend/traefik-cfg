@@ -3,4 +3,4 @@ http:
         dashboard-auth:
             basicAuth:
                 users:
-                    - 'admin:$apr1$mynqzhpx$81.jnjltnc2FgLBCVX2Ph/'
+                    - 'admin:$apr1$6egqxKqP$TU3RnZI02BzRn9cZqISM70'

@@ -1,20 +1,2 @@
 tls:
-  certificates:
-    - certFile: "/etc/certs/fullfrontend.test.pem"
-      keyFile: "/etc/certs/fullfrontend.test-key.pem"
-    - certFile: "/etc/certs/penpot.test.pem"
-      keyFile: "/etc/certs/penpot.test-key.pem"
-    - certFile: "/etc/certs/omnitools.test.pem"
-      keyFile: "/etc/certs/omnitools.test-key.pem"
-    - certFile: "/etc/certs/n8n.test.pem"
-      keyFile: "/etc/certs/n8n.test-key.pem"
-    - certFile: "/etc/certs/open-webui.test.pem"
-      keyFile: "/etc/certs/open-webui.test-key.pem"
-    - certFile: "/etc/certs/elementor.test.pem"
-      keyFile: "/etc/certs/elementor.test-key.pem"
-    - certFile: "/etc/certs/example.elementor.test.pem"
-      keyFile: "/etc/certs/example.elementor.test-key.pem"
-    - certFile: "/etc/certs/phpmyadmin.elementor.test.pem"
-      keyFile: "/etc/certs/phpmyadmin.elementor.test-key.pem"
-    - certFile: "/etc/certs/grangesdutilleul.test.pem"
-      keyFile: "/etc/certs/grangesdutilleul.test-key.pem"
+  certificates: []

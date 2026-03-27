@@ -1,4 +1,15 @@
+.DS_Store
+.idea/
+
 */acme.json
 
 .env.local
+.env.*.local
+docker-compose.dev.generated.yml
+config_dev/mkcert-domains.local.txt
+config_dev/dynamic/https-certs.local.yml
+
 /certs/
+*.pem
+*-key.pem
+rootCA.pem

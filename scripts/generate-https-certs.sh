@@ -2,7 +2,7 @@
 set -eu
 
 CERTS_DIR="${1:-./certs}"
-OUTPUT_FILE="${2:-./config_dev/dynamic/https-certs.yml}"
+OUTPUT_FILE="${2:-./config_dev/dynamic/https-certs.local.yml}"
 MOUNT_PATH="${3:-/etc/certs}"
 
 tmp_file="$(mktemp)"

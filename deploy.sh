@@ -1,11 +1,14 @@
 #!/bin/bash
+set -eu
 
 FILE="--env-file .env -f docker-compose.yml"
+APP_ENV="${APP_ENV:-dev}"
 
-if [ $APP_ENV = "prod" ]; then
+if [ "$APP_ENV" = "prod" ]; then
   FILE+=" -f docker-compose.prod.yml"
 else
-  FILE+=" -f docker-compose.dev.yml"
+  ./scripts/generate-dev-compose.sh
+  FILE+=" -f docker-compose.dev.yml -f docker-compose.dev.generated.yml"
 fi
 
 echo "Creating 'web' network if not exist";
@@ -13,7 +16,7 @@ docker network create web &> /dev/null || true;
 docker compose ${FILE} up --pull always -d;
 docker compose ${FILE} restart;
 
-if [ $APP_ENV != "prod" ]; then
+if [ "$APP_ENV" != "prod" ]; then
   echo "Waiting for mkcert container and certs...";
   attempts=0
   max_attempts=30

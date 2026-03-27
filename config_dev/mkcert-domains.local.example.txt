@@ -1,0 +1,2 @@
+# Add one local domain per line.
+# Copy this file to `config_dev/mkcert-domains.local.txt` for private, unversioned domains.

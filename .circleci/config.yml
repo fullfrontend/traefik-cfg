@@ -5,17 +5,16 @@ jobs:
             enabled: true
         steps:
             -   run:
-                    name: "Deploy Traefik to production"
+                    name: "Deploy Traefik example stack"
                     command: |
-                        ssh root@${PRODUCTION_SERVER_IP} "cd ${PRODUCTION_SERVER_PATH} && git pull --rebase && APP_ENV=prod ./deploy.sh"
+                        ssh "${PROD_SERVER_USER}@${PROD_SERVER_HOST}" "cd ${PROD_SERVER_PATH} && git pull --rebase && APP_ENV=prod ./deploy.sh"
 
 workflows:
     version: 2
     deploy:
         jobs:
             -   deploy:
-                    context: 'Prod Server'
+                    context: 'Production Server'
                     filters:
                         branches:
-                            only: master
-
+                            only: main

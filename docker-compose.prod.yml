@@ -4,5 +4,5 @@ services:
         volumes:
             - ./config:/etc/traefik
         labels:
-            - "traefik.http.routers.api.rule=Host(`prod.fullfrontend.be`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+            - "traefik.http.routers.api.rule=Host(`traefik.example.com`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
             - "traefik.http.routers.api.middlewares=dashboard-auth@file"
